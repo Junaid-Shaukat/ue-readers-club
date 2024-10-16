@@ -126,13 +126,14 @@ export default function LandingPage() {
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
               <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                <Button variant="ghost" className="mr-2" style={buttonStyle}>Login</Button>
+                <Link href='/dashboard'><Button variant="ghost" className="mr-2" style={buttonStyle}>Login</Button></Link>
               </motion.div>
+              {/* <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
+                <Link href='/dashboard'><Button variant="outline" className="mr-2" style={buttonStyle}>Sign Up</Button></Link>
+              </motion.div> */}
               <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                <Button variant="outline" className="mr-2" style={buttonStyle}>Sign Up</Button>
-              </motion.div>
-              <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                <Button className="bg-gradient-to-r from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700" style={buttonStyle}>Dashboard</Button>
+           <Link href="/dashboard">
+           <Button className="bg-gradient-to-r from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700" style={buttonStyle}>Get Started</Button></Link>
               </motion.div>
             </div>
             <div className="-mr-2 flex items-center sm:hidden">
@@ -309,7 +310,7 @@ export default function LandingPage() {
               </p>
               <div className="mt-10">
                 <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                  <a href="#" className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700" style={buttonStyle}>
+                  <a href="/dashboard" className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700" style={buttonStyle}>
                     Read More
                   </a>
                 </motion.div>
@@ -405,7 +406,7 @@ export default function LandingPage() {
               <p className="text-lg text-gray-500">
                 Push your reading boundaries and discover new favorites with our annual reading challenge. Set your goal, track your progress, and compete with fellow book lovers!
               </p>
-              <ul className="mt-10 space-y-4">
+              <ul className="ml-11 mt-10 space-y-4">
                 {["Set your personal reading goal", "Explore curated reading lists", "Track your progress", "Earn badges and rewards", "Connect with other participants"].map((item, index) => (
                   <motion.li
                     key={item}
@@ -425,7 +426,7 @@ export default function LandingPage() {
               </ul>
               <div className="mt-10">
                 <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                  <a href="#" className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700" style={buttonStyle}>
+                  <a href="/dashboard" className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700" style={buttonStyle}>
                     Start the Challenge
                   </a>
                 </motion.div>
