@@ -202,7 +202,7 @@ const Header = () => {
   </Link>
 </div>
 
-            <h1 className="text-2xl text-center mb-5 font-bold">Spotlight Reads & Future Favorites</h1>
+            <h1 className="text-2xl text-center mb-5 mt-4 font-bold">Spotlight Reads & Future Favorites</h1>
         <div className="ml-9 grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 mr-9">
           <motion.div
             className="bg-white rounded-lg shadow-md p-6"
