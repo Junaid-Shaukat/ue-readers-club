@@ -37,14 +37,14 @@ const genres = [
 
 const trendingBooks = [
   {
-    id: 1,
+    id: 1324324243242,
     title: "The Midnight Library",
     author: "Matt Haig",
     image:
       "https://images.unsplash.com/photo-1604866830893-c13cafa515d5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    id: 2,
+    id: 23242342,
     title: "Atomic Habits",
     author: "James Clear",
     image:
@@ -182,7 +182,7 @@ const Header = () => {
                     )}
                   </button>
                 </div>
-                <Link href="/dashboard">
+                <Link href={`/dashboard/book-details/${book.id}`}>
                 <Button      className=" ml-3 mt-5 mb-4 " variant="outline">Read More</Button>
                 </Link>
               </motion.div>
