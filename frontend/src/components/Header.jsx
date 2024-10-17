@@ -10,6 +10,7 @@ import {
   FaMagnifyingGlass,
   FaRegHeart,
   FaHeart,
+  FaArrowRightLong,
 } from "react-icons/fa6";
 import {
   GiMagnifyingGlass,
@@ -21,6 +22,7 @@ import {
   GiBookmark,
 } from "react-icons/gi";
 import { BsStars } from "react-icons/bs";
+import { Button } from "./ui/button";
 
 const genres = [
   { name: "Fiction", icon: <GiSpellBook /> },
@@ -50,7 +52,7 @@ const trendingBooks = [
   },
   {
     id: 3,
-    title: "The Invisible Life of Addie LaRue",
+    title: "The Invisible Life ",
     author: "V.E. Schwab",
     image:
       "https://images.unsplash.com/photo-1604866830893-c13cafa515d5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -76,18 +78,22 @@ const upcomingBooks = [
     id: 1,
     title: "New Dawn",
     author: "John Doe",
-    image: "/placeholder.svg?height=60&width=90",
+    image: "https://images.unsplash.com/photo-1607473129014-0afb7ed09c3a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     releaseDate: "October 20, 2024",
   },
   {
     id: 2,
     title: "Life of Stars",
     author: "Jane Smith",
-    image: "/placeholder.svg?height=60&width=90",
+    image: "https://images.unsplash.com/photo-1607473129014-0afb7ed09c3a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     releaseDate: "November 5, 2024",
   },
 ];
 
+const buttonStyle = {
+    fontSize: "0.875rem",
+    padding: "0.5rem 1rem",
+  };
 const Header = () => {
   const [favorites, setFavorites] = useState([]);
 
@@ -143,7 +149,7 @@ const Header = () => {
         </section>
         {/* Trending now section  */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-center justify-center text-gray-800 flex items-center">
+          <h2 className="text-2xl font-bold mb-6 text-center justify-center  text-gray-800 flex items-center">
             <BsStars className="mr-2 text-yellow-400" /> Trending Now
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -176,12 +182,28 @@ const Header = () => {
                     )}
                   </button>
                 </div>
+                <Link href="/dashboard">
+                <Button      className=" ml-3 mt-5 mb-4 " variant="outline">Read More</Button>
+                </Link>
               </motion.div>
             ))}
           </div>
         </section>
+        <div className="flex justify-center items-center ">
+  <Link href="/dashboard/books">
+    <Button
+      className="bg-gradient-to-r ml-3 mt-5 mb-4 pb-5  from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700"
+      style={buttonStyle}
+    >
+        View All Books 
+        <FaArrowRightLong className="m-1 ml-3 mt-2" size={16} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+    </Button>
+  </Link>
+</div>
+
+            <h1 className="text-2xl text-center mb-5 font-bold">Spotlight Reads & Future Favorites</h1>
+        <div className="ml-9 grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 mr-9">
           <motion.div
             className="bg-white rounded-lg shadow-md p-6"
             initial={{ opacity: 0, x: -20 }}
@@ -193,7 +215,7 @@ const Header = () => {
             </h2>
             <div className="flex items-center">
               <Image
-                src="/placeholder.svg?height=200&width=150"
+                src="https://images.unsplash.com/photo-1604866830893-c13cafa515d5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Book of the Month"
                 width={150}
                 height={200}
@@ -208,13 +230,9 @@ const Header = () => {
                   A thought-provoking novel about the choices that make up a
                   life, and the possibility of changing your destiny.
                 </p>
-                <motion.button
-                  className="mt-4 px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-full hover:from-green-600 hover:to-blue-600 transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Read More
-                </motion.button>
+                <Link href="/dashboard">
+                <Button      className=" ml-3 mt-5 mb-4 " variant="outline">Read More</Button>
+                </Link>
               </div>
             </div>
           </motion.div>

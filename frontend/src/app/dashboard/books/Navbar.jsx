@@ -23,10 +23,6 @@ export default function Component() {
                 <LibraryBig />
                 <span className="ml-2 text-xl font-bold text-gray-900">UE Readers Club</span>
               </Link>
-          
-          <Link href="/dashboard/books" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            All Books
-          </Link>
          
         </nav>
         <LibraryBig size={30} className="ml-4 lg:hidden "/>
