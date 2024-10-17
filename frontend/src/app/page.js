@@ -1,54 +1,83 @@
-'use client'
-import { Badge } from "@/components/ui/badge"
+"use client";
+import { Badge } from "@/components/ui/badge";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import React, { useState, useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion'
-import { Book, Users, Calendar, MessageCircle, ChevronDown, ChevronUp, Facebook, Twitter, Instagram, Search, Menu, Library, LibraryBig, MapPin, Clock, BookOpen, CheckCircle, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import {
+  Book,
+  Users,
+  Calendar,
+  MessageCircle,
+  ChevronDown,
+  ChevronUp,
+  Facebook,
+  Twitter,
+  Instagram,
+  Search,
+  Menu,
+  Library,
+  LibraryBig,
+  MapPin,
+  Clock,
+  BookOpen,
+  CheckCircle,
+  ArrowRight,
+} from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function LandingPage() {
-  const [openFaq, setOpenFaq] = useState(null)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const controls = useAnimation()
+  const [openFaq, setOpenFaq] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const controls = useAnimation();
 
   const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index)
-  }
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   useEffect(() => {
-    controls.start(i => ({
+    controls.start((i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.1 }
-    }))
-  }, [controls])
+      transition: { delay: i * 0.1 },
+    }));
+  }, [controls]);
 
   const bookAnimation = {
     rest: { scale: 1, rotate: 0 },
-    hover: { scale: 1.1, rotate: 5, transition: { type: 'spring', stiffness: 400, damping: 10 } }
-  }
+    hover: {
+      scale: 1.1,
+      rotate: 5,
+      transition: { type: "spring", stiffness: 400, damping: 10 },
+    },
+  };
 
   const buttonAnimation = {
     rest: { scale: 1 },
-    hover: { 
+    hover: {
       scale: 1.05,
-      transition: { 
-        type: 'spring', 
-        stiffness: 400, 
-        damping: 10
-      }
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10,
+      },
     },
-    tap: { scale: 0.95 }
-  }
+    tap: { scale: 0.95 },
+  };
 
   const buttonStyle = {
-    fontSize: '0.875rem',
-    padding: '0.5rem 1rem',
-  }
+    fontSize: "0.875rem",
+    padding: "0.5rem 1rem",
+  };
   const events = [
     {
       title: "The Great Gatsby Discussion",
@@ -78,7 +107,7 @@ export default function LandingPage() {
       time: "6:00 PM - 7:30 PM",
       location: "Austen House, Main Hall",
     },
-  ]
+  ];
   // TODO: for newsletter subscription
   // const [email, setEmail] = useState('')
   // const [isSubmitted, setIsSubmitted] = useState(false)
@@ -107,53 +136,141 @@ export default function LandingPage() {
                   alt="UE Readers Club Logo" 
                 /> */}
                 <LibraryBig />
-                <span className="ml-2 text-xl font-bold text-gray-900">UE Readers Club</span>
+                <span className="ml-2 text-xl font-bold text-gray-900">
+                  UE Readers Club
+                </span>
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <a href="#" className="border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              <a
+                href="#"
+                className="border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
                 Home
               </a>
-              <a href="#books" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              <a
+                href="#books"
+                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
                 Books
               </a>
-              <a href="#events-section" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              <a
+                href="#events-section"
+                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
                 Events
               </a>
-              <a href="#challange" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              <a
+                href="#challange"
+                className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              >
                 Community
               </a>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
-              <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                <Link href='/dashboard'><Button variant="ghost" className="mr-2" style={buttonStyle}>Login</Button></Link>
+              <motion.div
+                variants={buttonAnimation}
+                initial="rest"
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Link href="/dashboard">
+                  <Button variant="ghost" className="mr-2" style={buttonStyle}>
+                    Login
+                  </Button>
+                </Link>
               </motion.div>
               {/* <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
                 <Link href='/dashboard'><Button variant="outline" className="mr-2" style={buttonStyle}>Sign Up</Button></Link>
               </motion.div> */}
-              <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-           <Link href="/dashboard">
-           <Button className="bg-gradient-to-r from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700" style={buttonStyle}>Get Started</Button></Link>
+              <motion.div
+                variants={buttonAnimation}
+                initial="rest"
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Link href="/dashboard">
+                  <Button
+                    className="bg-gradient-to-r from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700"
+                    style={buttonStyle}
+                  >
+                    Get Started
+                  </Button>
+                </Link>
               </motion.div>
             </div>
             <div className="-mr-2 flex items-center sm:hidden">
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
+                  <Button
+                    variant="ghost"
+                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
+                  >
                     <Menu className="h-6 w-6" aria-hidden="true" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
-                  <nav className="mt-5">
-                    <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Home</a>
-                    <a href="#books" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Books</a>
-                    <a href="#events-section" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Events</a>
-                    <a href="#challange" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Community</a>
+                  <nav className="mt-6">
+                  <Link href="/" className="flex-shrink-0 mb-2 flex items-center">
+                
+                <LibraryBig />
+                <span className="ml-2 text-xl font-bold text-gray-900">UE Readers Club</span>
+              </Link>
+                    <a
+                      href="#"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    >
+                      Home
+                    </a>
+                    <a
+                      href="#books"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    >
+                      Books
+                    </a>
+                    <a
+                      href="#events-section"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    >
+                      Events
+                    </a>
+                    <a
+                      href="#challange"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    >
+                      Community
+                    </a>
                   </nav>
-                  <div className="mt-6 space-y-4">
-                    <Button variant="outline" className="w-full" style={buttonStyle}>Login</Button>
-                    <Button variant="outline" className="w-full" style={buttonStyle}>Sign Up</Button>
-                    <Button className="w-full bg-gradient-to-r from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700" style={buttonStyle}>Dashboard</Button>
+                  <div className="mt-6">
+                    <Link href="/dashboard">
+                      {" "}
+                      <Button
+                        variant="outline"
+                        className="w-full mt-3"
+                        style={buttonStyle}
+                      >
+                        Login
+                      </Button>{" "}
+                    </Link>
+                    <Link href="/dashboard">
+                      {" "}
+                      <Button
+                        variant="outline"
+                        className="w-full mt-3"
+                        style={buttonStyle}
+                      >
+                        Sign Up
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard">
+                      {" "}
+                      <Button
+                        className="w-full mt-3 bg-gradient-to-r from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700"
+                        style={buttonStyle}
+                      >
+                        Dashboard
+                      </Button>
+                    </Link>
                   </div>
                 </SheetContent>
               </Sheet>
@@ -161,41 +278,68 @@ export default function LandingPage() {
           </div>
         </div>
       </nav>
-        {/* Hero Section */}
-        <section className="relative bg-white overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-            <svg className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <svg
+              className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+              fill="currentColor"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
               <polygon points="50,0 100,0 50,100 0,100" />
             </svg>
             <div className="relative pt-6 px-4 sm:px-6 lg:px-8"></div>
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div className="sm:text-center lg:text-left">
-              <motion.h1 
+                <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                   className="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl"
                 >
-                  <span className="block xl:inline">Discover new worlds</span>{' '}
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 xl:inline">one page at a time</span>
+                  <span className="block xl:inline">Discover new worlds</span>{" "}
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 xl:inline">
+                    one page at a time
+                  </span>
                 </motion.h1>
-                <motion.p 
+                <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
                 >
-                  Join our vibrant community of book lovers. Explore captivating stories, engage in thought-provoking discussions, and connect with fellow readers from around the globe.
+                  Join our vibrant community of book lovers. Explore captivating
+                  stories, engage in thought-provoking discussions, and connect
+                  with fellow readers from around the globe.
                 </motion.p>
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                  <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="rest">
-                    <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 md:py-3 md:text-lg md:px-8">
+                  <motion.div
+                    variants={buttonAnimation}
+                    initial="rest"
+                    whileHover="hover"
+                    whileTap="rest"
+                  >
+                    <a
+                      href="#"
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 md:py-3 md:text-lg md:px-8"
+                    >
                       Join Now
                     </a>
                   </motion.div>
-                  <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="rest" className="mt-3 sm:mt-0 sm:ml-3">
-                    <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-3 md:text-lg md:px-8">
+                  <motion.div
+                    variants={buttonAnimation}
+                    initial="rest"
+                    whileHover="hover"
+                    whileTap="rest"
+                    className="mt-3 sm:mt-0 sm:ml-3"
+                  >
+                    <a
+                      href="#"
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-3 md:text-lg md:px-8"
+                    >
                       Learn More
                     </a>
                   </motion.div>
@@ -220,9 +364,12 @@ export default function LandingPage() {
       <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-          <Badge variant="outline" className="text-green-600 border-green-600 text-[14px]">
-         Features
-        </Badge>
+            <Badge
+              variant="outline"
+              className="text-green-600 border-green-600 text-[14px]"
+            >
+              Features
+            </Badge>
             <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
               Why Join UE Readers Club?
             </p>
@@ -232,23 +379,26 @@ export default function LandingPage() {
             <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
               {[
                 {
-                  name: 'Diverse Book Selection',
-                  description: 'Access to a wide range of genres and authors.',
+                  name: "Diverse Book Selection",
+                  description: "Access to a wide range of genres and authors.",
                   icon: Book,
                 },
                 {
-                  name: 'Community Discussions',
-                  description: 'Engage in lively debates and share your thoughts.',
+                  name: "Community Discussions",
+                  description:
+                    "Engage in lively debates and share your thoughts.",
                   icon: Users,
                 },
                 {
-                  name: 'Regular Meetups',
-                  description: 'Join both online and offline book club meetings.',
+                  name: "Regular Meetups",
+                  description:
+                    "Join both online and offline book club meetings.",
                   icon: Calendar,
                 },
                 {
-                  name: 'Author Q&A Sessions',
-                  description: 'Interact with your favorite authors in exclusive sessions.',
+                  name: "Author Q&A Sessions",
+                  description:
+                    "Interact with your favorite authors in exclusive sessions.",
                   icon: MessageCircle,
                 },
               ].map((feature, index) => (
@@ -263,9 +413,13 @@ export default function LandingPage() {
                     <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-r from-green-400 to-green-600 text-white">
                       <feature.icon className="h-6 w-6" aria-hidden="true" />
                     </div>
-                    <p className="ml-16 text-lg leading-6 font-medium text-gray-900">{feature.name}</p>
+                    <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
+                      {feature.name}
+                    </p>
                   </dt>
-                  <dd className="mt-2 ml-16 text-base text-gray-500">{feature.description}</dd>
+                  <dd className="mt-2 ml-16 text-base text-gray-500">
+                    {feature.description}
+                  </dd>
                 </motion.div>
               ))}
             </dl>
@@ -277,9 +431,12 @@ export default function LandingPage() {
       <section className="py-16 bg-white" id="books">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center mb-12">
-          <Badge variant="outline" className="text-green-600 border-green-600 text-[14px]">
-          Featured Read
-        </Badge>
+            <Badge
+              variant="outline"
+              className="text-green-600 border-green-600 text-[14px]"
+            >
+              Featured Read
+            </Badge>
             <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
               Book of the Month
             </p>
@@ -303,14 +460,29 @@ export default function LandingPage() {
               </motion.div>
             </div>
             <div className="mt-10 ml-10 lg:mt-0">
-              <h3 className="text-2xl font-bold text-gray-900">Atomic Habits</h3>
+              <h3 className="text-2xl font-bold text-gray-900">
+                Atomic Habits
+              </h3>
               <p className="mt-3 text-lg text-gray-500">James Clear</p>
               <p className="mt-5 text-base text-gray-500">
-              Atomic Habits, written by James Clear, is a bestselling self-help book that focuses on the power of small, consistent changes to improve one's life. The book provides practical strategies and tools for creating and maintaining positive habits, and for breaking negative ones.
+                Atomic Habits, written by James Clear, is a bestselling
+                self-help book that focuses on the power of small, consistent
+                changes to improve one's life. The book provides practical
+                strategies and tools for creating and maintaining positive
+                habits, and for breaking negative ones.
               </p>
               <div className="mt-10">
-                <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                  <a href="/dashboard" className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700" style={buttonStyle}>
+                <motion.div
+                  variants={buttonAnimation}
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap="tap"
+                >
+                  <a
+                    href="/dashboard"
+                    className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700"
+                    style={buttonStyle}
+                  >
                     Read More
                   </a>
                 </motion.div>
@@ -321,48 +493,56 @@ export default function LandingPage() {
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="py-16 bg-gradient-to-b from-gray-50 to-white" id="events-section">
+      <section
+        className="py-16 bg-gradient-to-b from-gray-50 to-white"
+        id="events-section"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center mb-12">
-          <Badge variant="outline" className="text-green-600 border-green-600 text-[14px]">
-          Events
-        </Badge>
+            <Badge
+              variant="outline"
+              className="text-green-600 border-green-600 text-[14px]"
+            >
+              Events
+            </Badge>
             <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
               Upcoming Book Club Events
             </p>
           </div>
           <div className="w-full p-4">
-    
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {events.map((event, index) => (
-          <Card key={index} className="border-gray-200 shadow-md hover:shadow-lg transition-shadow bg-white">
-            <CardHeader>
-              <CardTitle className="text-black">{event.title}</CardTitle>
-              <CardDescription className="flex items-center text-gray-600">
-                <BookOpen className="w-5 h-5 mr-2 text-green-600" />
-                {event.book}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center text-gray-600">
-                  <Calendar className="w-5 h-5 mr-2 text-green-600" />
-                  {event.date}
-                </div>
-                <div className="flex items-center text-gray-600">
-                  <Clock className="w-5 h-5 mr-2 text-green-600" />
-                  {event.time}
-                </div>
-                <div className="flex items-center text-gray-600">
-                  <MapPin className="w-5 h-5 mr-2 text-green-600" />
-                  {event.location}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {events.map((event, index) => (
+                <Card
+                  key={index}
+                  className="border-gray-200 shadow-md hover:shadow-lg transition-shadow bg-white"
+                >
+                  <CardHeader>
+                    <CardTitle className="text-black">{event.title}</CardTitle>
+                    <CardDescription className="flex items-center text-gray-600">
+                      <BookOpen className="w-5 h-5 mr-2 text-green-600" />
+                      {event.book}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center text-gray-600">
+                        <Calendar className="w-5 h-5 mr-2 text-green-600" />
+                        {event.date}
+                      </div>
+                      <div className="flex items-center text-gray-600">
+                        <Clock className="w-5 h-5 mr-2 text-green-600" />
+                        {event.time}
+                      </div>
+                      <div className="flex items-center text-gray-600">
+                        <MapPin className="w-5 h-5 mr-2 text-green-600" />
+                        {event.location}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
           {/* <div className="mt-10 space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
             {[
               { title: "Virtual Book Discussion", date: "June 15, 2024", time: "7:00 PM EST" },
@@ -394,9 +574,12 @@ export default function LandingPage() {
       <section className="py-16 bg-white" id="challange">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center mb-12">
-          <Badge variant="outline" className="text-green-600 border-green-600 text-[14px]">
-          Challenge
-        </Badge>
+            <Badge
+              variant="outline"
+              className="text-green-600 border-green-600 text-[14px]"
+            >
+              Challenge
+            </Badge>
             <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
               Join Our Annual Reading Challenge
             </p>
@@ -404,10 +587,18 @@ export default function LandingPage() {
           <div className="mt-10 lg:mt-0 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div>
               <p className="text-lg text-gray-500">
-                Push your reading boundaries and discover new favorites with our annual reading challenge. Set your goal, track your progress, and compete with fellow book lovers!
+                Push your reading boundaries and discover new favorites with our
+                annual reading challenge. Set your goal, track your progress,
+                and compete with fellow book lovers!
               </p>
               <ul className="ml-11 mt-10 space-y-4">
-                {["Set your personal reading goal", "Explore curated reading lists", "Track your progress", "Earn badges and rewards", "Connect with other participants"].map((item, index) => (
+                {[
+                  "Set your personal reading goal",
+                  "Explore curated reading lists",
+                  "Track your progress",
+                  "Earn badges and rewards",
+                  "Connect with other participants",
+                ].map((item, index) => (
                   <motion.li
                     key={item}
                     initial={{ opacity: 0, x: -50 }}
@@ -416,8 +607,18 @@ export default function LandingPage() {
                     className="flex items-center"
                   >
                     <div className="flex-shrink-0">
-                      <svg className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg
+                        className="h-6 w-6 text-green-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     </div>
                     <p className="ml-3 text-base text-gray-500">{item}</p>
@@ -425,8 +626,17 @@ export default function LandingPage() {
                 ))}
               </ul>
               <div className="mt-10">
-                <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                  <a href="/dashboard" className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700" style={buttonStyle}>
+                <motion.div
+                  variants={buttonAnimation}
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap="tap"
+                >
+                  <a
+                    href="/dashboard"
+                    className="inline-flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700"
+                    style={buttonStyle}
+                  >
                     Start the Challenge
                   </a>
                 </motion.div>
@@ -453,37 +663,47 @@ export default function LandingPage() {
             What Our Members Say
           </h2>
           <div className="mt-6 grid gap-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
-  {[
-    {
-      name: "Sarah Johnson",
-      quote: "UE Readers Club has reignited my passion for reading. The discussions are always insightful!",
-      image: "https://avatar.iran.liara.run/public/40"
-    },
-    {
-      name: "Michael Chen",
-      quote: "I've discovered so many great books through this club. It's been an amazing journey!",
-      image: "https://avatar.iran.liara.run/public"
-    },
-    {
-      name: "Emily Rodriguez",
-      quote: "The author Q&A sessions are my favorite. It's incredible to interact with writers I admire.",
-      image: "https://avatar.iran.liara.run/public/boy"
-    },
-  ].map((testimonial, index) => (
-    <motion.div
-      key={testimonial.name}
-      initial={{ opacity: 0, y: 50 }}
-      animate={controls}
-      custom={index}
-      className="flex flex-col items-center"
-    >
-      <img className="w-20 h-20 rounded-full mb-4 border-4 border-green-400" src={testimonial.image} alt={testimonial.name} />
-      <p className="text-lg leading-6 font-medium text-gray-900">{testimonial.name}</p>
-      <div className="mt-2 text-base text-gray-500 text-center italic">&ldquo;{testimonial.quote}&rdquo;</div>
-    </motion.div>
-  ))}
-</div>
-
+            {[
+              {
+                name: "Sarah Johnson",
+                quote:
+                  "UE Readers Club has reignited my passion for reading. The discussions are always insightful!",
+                image: "https://avatar.iran.liara.run/public/40",
+              },
+              {
+                name: "Michael Chen",
+                quote:
+                  "I've discovered so many great books through this club. It's been an amazing journey!",
+                image: "https://avatar.iran.liara.run/public",
+              },
+              {
+                name: "Emily Rodriguez",
+                quote:
+                  "The author Q&A sessions are my favorite. It's incredible to interact with writers I admire.",
+                image: "https://avatar.iran.liara.run/public/boy",
+              },
+            ].map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 50 }}
+                animate={controls}
+                custom={index}
+                className="flex flex-col items-center"
+              >
+                <img
+                  className="w-20 h-20 rounded-full mb-4 border-4 border-green-400"
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                />
+                <p className="text-lg leading-6 font-medium text-gray-900">
+                  {testimonial.name}
+                </p>
+                <div className="mt-2 text-base text-gray-500 text-center italic">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -494,11 +714,15 @@ export default function LandingPage() {
           <div className="lg:flex lg:items-center lg:justify-between">
             <h2 className="text-3xl font-bold sm:text-4xl">
               <span className="block">Want book recommendations?</span>
-              <span className="block text-green-900">Sign up for our newsletter.</span>
+              <span className="block text-green-900">
+                Sign up for our newsletter.
+              </span>
             </h2>
             <div className="mt-8 lg:mt-0 lg:flex-shrink-0">
               <form className="sm:flex">
-                <label htmlFor="email-address" className="sr-only">Email address</label>
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
+                </label>
                 <Input
                   id="email-address"
                   name="email"
@@ -509,10 +733,23 @@ export default function LandingPage() {
                   placeholder="Enter your email"
                 />
                 <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                  <motion.div variants={buttonAnimation} initial="rest" whileHover="hover" whileTap="tap">
-                    <Button type="submit" className="bg-gradient-to-r flex justify-center items-center gap-1  from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700" style={buttonStyle}>
+                  <motion.div
+                    variants={buttonAnimation}
+                    initial="rest"
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    <Button
+                      type="submit"
+                      className="bg-gradient-to-r flex justify-center items-center gap-1  from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700"
+                      style={buttonStyle}
+                    >
                       Subscribe
-                      <ArrowRight className="mt-[5px]" strokeWidth={3} size={18}/>
+                      <ArrowRight
+                        className="mt-[5px]"
+                        strokeWidth={3}
+                        size={18}
+                      />
                     </Button>
                   </motion.div>
                 </div>
@@ -530,10 +767,25 @@ export default function LandingPage() {
           </h2>
           <div className="mt-6 space-y-4">
             {[
-              { question: 'How often do you meet?', answer: 'We have online discussions weekly and in-person meetups monthly.' },
-              { question: 'Can I suggest books for the club?', answer: 'We encourage members to suggest books for future readings.' },
-              { question: 'Is there a free trial available?', answer: 'Yes, we offer a 7-day free trial for new members.' },
-              { question: 'How do I cancel my membership?', answer: 'You can cancel your membership anytime from your account settings.' },
+              {
+                question: "How often do you meet?",
+                answer:
+                  "We have online discussions weekly and in-person meetups monthly.",
+              },
+              {
+                question: "Can I suggest books for the club?",
+                answer:
+                  "We encourage members to suggest books for future readings.",
+              },
+              {
+                question: "Is there a free trial available?",
+                answer: "Yes, we offer a 7-day free trial for new members.",
+              },
+              {
+                question: "How do I cancel my membership?",
+                answer:
+                  "You can cancel your membership anytime from your account settings.",
+              },
             ].map((faq, index) => (
               <motion.div
                 key={faq.question}
@@ -547,7 +799,9 @@ export default function LandingPage() {
                   className="w-full px-4 py-5 sm:px-6 text-left focus:outline-none"
                 >
                   <div className="flex justify-between items-center">
-                    <h3 className="text-lg leading-6 font-medium text-gray-900">{faq.question}</h3>
+                    <h3 className="text-lg leading-6 font-medium text-gray-900">
+                      {faq.question}
+                    </h3>
                     {openFaq === index ? (
                       <ChevronUp className="h-5 w-5 text-green-500" />
                     ) : (
@@ -558,7 +812,7 @@ export default function LandingPage() {
                 {openFaq === index && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
+                    animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3 }}
                     className="px-4 pb-5 sm:px-6"
@@ -576,15 +830,27 @@ export default function LandingPage() {
       <footer className="bg-gray-50">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
           <div className="flex justify-center space-x-6 md:order-2">
-            <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-gray-500">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="#"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <span className="sr-only">Facebook</span>
               <Facebook className="h-6 w-6" />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-gray-500">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="#"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <span className="sr-only">Twitter</span>
               <Twitter className="h-6 w-6" />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-gray-500">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="#"
+              className="text-gray-400 hover:text-gray-500"
+            >
               <span className="sr-only">Instagram</span>
               <Instagram className="h-6 w-6" />
             </motion.a>
@@ -597,5 +863,5 @@ export default function LandingPage() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
