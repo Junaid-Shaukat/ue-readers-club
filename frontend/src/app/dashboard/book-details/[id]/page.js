@@ -9,7 +9,7 @@ const BookDetails = () => {
 
   return (
     <div>
-      <h1>Book Details for ID: {id}</h1>
+      {/* <h1>Book Details for ID: {id}</h1> */}
       {/* Fetch and display book details using the id */}
     <BookDetailsPage/>
 
