@@ -34,6 +34,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { UserButton } from "@clerk/nextjs";
 
 export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState(null);
@@ -197,9 +198,13 @@ export default function LandingPage() {
                     Get Started
                   </Button>
                 </Link>
+                
+
               </motion.div>
+              <div className="ml-4 mt-2"><UserButton/></div>
             </div>
             <div className="-mr-2 flex items-center sm:hidden">
+                
               <Sheet>
                 <SheetTrigger asChild>
                   <Button
@@ -210,7 +215,8 @@ export default function LandingPage() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
-                  <nav className="mt-6">
+                    <UserButton/>
+                    <nav className="mt-6">
                   <Link href="/" className="flex-shrink-0 mb-2 flex items-center">
                 
                 <LibraryBig />
