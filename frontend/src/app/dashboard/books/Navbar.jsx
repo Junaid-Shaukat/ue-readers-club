@@ -18,7 +18,7 @@ export default function Component() {
     <header className="flex h-16 w-full items-center border-b border-gray-200 dark:border-gray-800">
       <div className="mx-auto max-w-7xl flex w-full items-center px-4 md:px-6">
         <nav className=" hidden lg:flex items-center space-x-6">
-      <Link href="/" className="flex-shrink-0 flex items-center">
+      <Link href="/dashboard" className="flex-shrink-0 flex items-center">
                 
                 <LibraryBig />
                 <span className="ml-2 text-xl font-bold text-gray-900">UE Readers Club</span>

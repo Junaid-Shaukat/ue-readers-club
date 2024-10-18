@@ -7,13 +7,97 @@ import { RefreshCw } from "lucide-react";
 
 // Assume this function fetches a random quote from an API
 async function fetchRandomQuote() {
-  // Replace this with your actual API call
-  return {
-    text: "The more that you read, the more things you will know. The more that you learn, the more places you'll go.",
-    author: "Dr. Seuss"
-  };
-}
-
+    const quotes = [
+      {
+        text: "A room without books is like a body without a soul.",
+        author: "Marcus Tullius Cicero"
+      },
+      {
+        text: "Books are a uniquely portable magic.",
+        author: "Stephen King"
+      },
+      {
+        text: "So many books, so little time.",
+        author: "Frank Zappa"
+      },
+      {
+        text: "Good friends, good books, and a sleepy conscience: this is the ideal life.",
+        author: "Mark Twain"
+      },
+      {
+        text: "I have always imagined that Paradise will be a kind of library.",
+        author: "Jorge Luis Borges"
+      },
+      {
+        text: "The only thing that you absolutely have to know is the location of the library.",
+        author: "Albert Einstein"
+      },
+      {
+        text: "If you don’t like reading, you haven’t found the right book.",
+        author: "J.K. Rowling"
+      },
+      {
+        text: "A book is a dream that you hold in your hand.",
+        author: "Neil Gaiman"
+      },
+      {
+        text: "Books are a mirror: if an ass looks in, you can’t expect an angel to look out.",
+        author: "B. W. Powe"
+      },
+      {
+        text: "The man who does not read good books is no better than the man who can't.",
+        author: "Mark Twain"
+      },
+      {
+        text: "Reading is to the mind what exercise is to the body.",
+        author: "Joseph Addison"
+      },
+      {
+        text: "Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers.",
+        author: "Charles W. Eliot"
+      },
+      {
+        text: "There are worse crimes than burning books. One of them is not reading them.",
+        author: "Joseph Brodsky"
+      },
+      {
+        text: "Books can be dangerous. The best ones should be labeled 'This could change your life.'",
+        author: "Helen Exley"
+      },
+      {
+        text: "A great book should leave you with many experiences, and slightly exhausted at the end. You live several lives while reading.",
+        author: "William Styron"
+      },
+      {
+        text: "The best way to predict your future is to create it.",
+        author: "Peter Drucker"
+      },
+      {
+        text: "We read to know we are not alone.",
+        author: "C.S. Lewis"
+      },
+      {
+        text: "Reading gives us someplace to go when we have to stay where we are.",
+        author: "Mason Cooley"
+      },
+      {
+        text: "The world was hers for the reading.",
+        author: "Betty Smith"
+      },
+      {
+        text: "Reading is a form of therapy.",
+        author: "Unknown"
+      },
+      {
+        text: "In books, I have traveled, not only to other worlds, but into my own.",
+        author: "Anna Quindlen"
+      },
+    ];
+  
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+  }
+  
 export default function QuoteSection() {
   const [quote, setQuote] = useState({ text: '', author: '' });
 
@@ -53,4 +137,4 @@ export default function QuoteSection() {
       </Card>
     </section>
   );
-}
+}  
