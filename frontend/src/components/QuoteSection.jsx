@@ -7,7 +7,6 @@ import { RefreshCw } from "lucide-react";
 
 async function fetchRandomQuote() {
     const quotes = [
-      [
         {
           text: "A room without books is like a body without a soul.",
           author: "Marcus Tullius Cicero"
@@ -41,7 +40,7 @@ async function fetchRandomQuote() {
           author: "Neil Gaiman"
         },
         {
-          text: "Books are a mirror: if an ass looks in, you can not expect an angel to look out.",
+          text: "Books are a mirror: if an ass looks in, you cannot expect an angel to look out.",
           author: "B. W. Powe"
         },
         {
@@ -91,14 +90,13 @@ async function fetchRandomQuote() {
         {
           text: "In books, I have traveled, not only to other worlds, but into my own.",
           author: "Anna Quindlen"
-        },
-      ]
+        }
     ];
-  
+
     const randomIndex = Math.floor(Math.random() * quotes.length);
     return quotes[randomIndex];
-  }
-  
+}
+
 export default function QuoteSection() {
   const [quote, setQuote] = useState({ text: '', author: '' });
 
