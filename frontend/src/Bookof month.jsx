@@ -14,7 +14,7 @@ export default function Bookofmonth() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('http://https://ue-readers-club-backend.vercel.app//admin/getAllBooks', {
+        const response = await axios.get('http://https://ue-readers-club-backend.vercel.app/admin/getAllBooks', {
           headers: {
             "Cache-Control": "no-cache",
             Pragma: "no-cache",

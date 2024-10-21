@@ -63,7 +63,7 @@ export const Commentlike = ({ userId }) => {
     const fetchUser = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://https://ue-readers-club-backend.vercel.app//users/findbyid/${userId}`);
+        const response = await axios.get(`http://https://ue-readers-club-backend.vercel.app/users/findbyid/${userId}`);
         setUser(response.data.user);
       } catch (err) {
         setError('Failed to fetch user data');
@@ -308,7 +308,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
     }
 
     try {
-      const response = await axios.get(`http://https://ue-readers-club-backend.vercel.app//comment/getcommentByBookId/${bookid}`);
+      const response = await axios.get(`http://https://ue-readers-club-backend.vercel.app/comment/getcommentByBookId/${bookid}`);
       if (Array.isArray(response.data.comments)) {
         const sortedComments = response.data.comments.sort((a, b) => new Date(b.waqt) - new Date(a.waqt));
         setComments(sortedComments);
@@ -345,7 +345,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
       };
 
       try {
-        const response = await axios.post("http://https://ue-readers-club-backend.vercel.app//comment/createcomment", commentData);
+        const response = await axios.post("http://https://ue-readers-club-backend.vercel.app/comment/createcomment", commentData);
         if (response.status === 200) {
           fetchComments();
           setNewComment("");
@@ -372,7 +372,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
       };
 
       try {
-        const  response = await axios.post("http://https://ue-readers-club-backend.vercel.app//comment/createcomment", replyData);
+        const  response = await axios.post("http://https://ue-readers-club-backend.vercel.app/comment/createcomment", replyData);
         if (response.status === 200) {
           await fetchComments();
           if (topCommentRef.current) {
@@ -389,7 +389,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
 
   const handleLike = async (commentId, userId) => {
     try {
-      const response = await axios.post(`http://https://ue-readers-club-backend.vercel.app//comment/likes/${commentId}`, { userId });
+      const response = await axios.post(`http://https://ue-readers-club-backend.vercel.app/comment/likes/${commentId}`, { userId });
       if (response.status === 200) {
         fetchComments();
       } else {
@@ -402,7 +402,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
 
   const handleEdit = async (commentId, newContent) => {
     try {
-      const response = await axios.put(`http://https://ue-readers-club-backend.vercel.app//comment/editCommentById/${commentId}`, { content: newContent });
+      const response = await axios.put(`http://https://ue-readers-club-backend.vercel.app/comment/editCommentById/${commentId}`, { content: newContent });
       if (response.status === 200) {
         fetchComments();
       } else {
@@ -415,7 +415,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
 
   const handleDelete = async (commentId) => {
     try {
-      const response = await axios.delete(`http://https://ue-readers-club-backend.vercel.app//comment/deletecomment/${commentId}`);
+      const response = await axios.delete(`http://https://ue-readers-club-backend.vercel.app/comment/deletecomment/${commentId}`);
       if (response.status === 200) {
         fetchComments();
       } else {
