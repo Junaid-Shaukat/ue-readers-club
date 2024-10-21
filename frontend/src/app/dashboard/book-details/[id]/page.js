@@ -19,7 +19,7 @@ const BookDetails = () => {
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/admin/getBookById/${id}`);
+        const response = await axios.get(`http://https://ue-readers-club-backend.vercel.app//admin/getBookById/${id}`);
         setBook(response.data.book); // Update book state with the fetched book object
       } catch (err) {
         console.error("Error fetching book details:", err);  // Log the error for debugging
@@ -44,7 +44,7 @@ const BookDetails = () => {
     const trackClick = async () => {
       try {
         if (user && user.id) {
-          await axios.put(`http://localhost:3001/admin/clicks/${id}`, { userId: user.id });
+          await axios.put(`http://https://ue-readers-club-backend.vercel.app//admin/clicks/${id}`, { userId: user.id });
         }
       } catch (err) {
         console.error("Error tracking click:", err);  // Log the error for debugging
@@ -72,7 +72,7 @@ const BookDetails = () => {
       };
   
       try {
-        const response = await axios.post('http://localhost:3001/users/create', userData);
+        const response = await axios.post('http://https://ue-readers-club-backend.vercel.app//users/create', userData);
         console.log("User data submitted successfully:", response.data);
         // You can handle the response data here (e.g., save it to state, redirect, etc.)
       }

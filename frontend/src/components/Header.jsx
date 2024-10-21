@@ -77,7 +77,7 @@ export default function Header() {
   const fetchBooks = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/admin/getAllBooks",
+        "http://https://ue-readers-club-backend.vercel.app//admin/getAllBooks",
         {
           headers: {
             "Cache-Control": "no-cache",
@@ -127,7 +127,7 @@ export default function Header() {
     try {
       const updatePromises = books.map(async (book) => {
         return await axios.put(
-          `http://localhost:3001/admin/updateBook/${book._id}`,
+          `http://https://ue-readers-club-backend.vercel.app//admin/updateBook/${book._id}`,
           {
             trendingNow: true,
           }
