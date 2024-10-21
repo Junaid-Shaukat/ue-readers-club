@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ChevronLeft, BookOpen, MessageSquare, Send, MoreVertical, Eye, ThumbsUp, Reply, Edit, Trash2, Clock, Calendar, CornerUpLeft, Loader2, ChevronDown, X, Tag, Share2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,7 +12,7 @@ import axios from 'axios';
 import { useUser } from '@clerk/nextjs';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export const LikesPopup = ({ isOpen, onClose, likes }) => {
+const LikesPopup = ({ isOpen, onClose, likes }) => {
   if (likes.length === 0) {
     return null;
   }
@@ -44,7 +45,7 @@ export const LikesPopup = ({ isOpen, onClose, likes }) => {
             <h3 className="text-lg font-semibold mb-4">Liked by:</h3>
             <ul className="space-y-2">
               {likes.map((userId) => (
-                <Commentlike key={userId} userId={userId} />
+                <CommentLike key={userId} userId={userId} />
               ))}
             </ul>
           </motion.div>
@@ -54,7 +55,7 @@ export const LikesPopup = ({ isOpen, onClose, likes }) => {
   );
 };
 
-export const Commentlike = ({ userId }) => {
+const CommentLike = ({ userId }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -114,7 +115,7 @@ export const Commentlike = ({ userId }) => {
   );
 };
 
-export const Comment = ({ comment, onReply, onLike, onEdit, onDelete, currentUserId, allComments, onScrollToComment }) => {
+const Comment = ({ comment, onReply, onLike, onEdit, onDelete, currentUserId, allComments, onScrollToComment }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
   const [isReplying, setIsReplying] = useState(false);
@@ -290,7 +291,7 @@ const CustomToast = ({ message, isVisible, onClose }) => {
   );
 };
 
-const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortdescription: '', longdescription: '', clicks: 0, imageurls: '', tags: '' } }) => {
+export default function BookDetails({ book = { _id: '', name: '', author: '', genre: '', shortdescription: '', longdescription: '', clicks: 0, imageurls: '', tags: '' } }) {
   const { user } = useUser();
   const [bookid, setbookid] = useState(book._id);
   const [comments, setComments] = useState([]);
@@ -363,16 +364,16 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
       const replyData = {
         user_id: user.id,
         book_id: bookid,
-        waqt: new Date().toISOString(),
+        waqt: new  Date().toISOString(),
         user: `${user.firstName} ${user.lastName}`,
         avatar: user.imageUrl,
         content: content.trim(),
         likes: 0,
-        parent_id:  parentId,
+        parent_id: parentId,
       };
 
       try {
-        const  response = await axios.post("https://ue-readers-club-backend.vercel.app/comment/createcomment", replyData);
+        const response = await axios.post("https://ue-readers-club-backend.vercel.app/comment/createcomment", replyData);
         if (response.status === 200) {
           await fetchComments();
           if (topCommentRef.current) {
@@ -439,7 +440,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
   };
 
   return (
-    <div className="min-h-screen bg-white p-8">
+    <div className="min-h-screen bg-white p-4 sm:p-8">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-2xl font-bold mb-4">Book Details</h1>
         
@@ -462,11 +463,11 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
                 className="rounded-t-lg md:rounded-l-lg md:rounded-t-none"
               />
             </div>
-            <CardContent className="md:w-2/3 p-8 bg-white">
+            <CardContent className="md:w-2/3 p-4 sm:p-8 bg-white">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h1 className="text-4xl font-bold mb-2 text-gray-900">{book.name}</h1>
-                  <h2 className="text-2xl text-gray-600 mb-4">by {book.author}</h2>
+                  <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-gray-900">{book.name}</h1>
+                  <h2 className="text-xl sm:text-2xl text-gray-600 mb-4">by {book.author}</h2>
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -491,7 +492,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
                 <span className="text-green-700 font-semibold">{book.genre}</span>
               </div>
               
-              <p className="text-gray-700 mb-6 italic">{book.shortdescription}</p>
+              <p className="text-gray-700 mb-6 italic line-clamp-2">{book.shortdescription}</p>
               
               <div className="mb-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">About the Book</h3>
@@ -519,7 +520,7 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
         </Card>
 
         <Card className="border-none shadow-lg">
-          <CardContent className="p-8">
+          <CardContent className="p-4 sm:p-8">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
               <MessageSquare className="h-6 w-6 mr-2" />
               Discussion
@@ -530,10 +531,10 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
                 placeholder="Share your thoughts on this book..."
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                className="mb-4"
+                className="mb-4 w-full"
               />
               
-              <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white">
+              <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto">
                 <Send className="h-4 w-4 mr-2" />
                 Post Comment
               </Button>
@@ -573,6 +574,4 @@ const BookDetails = ({ book = { _id: '', name: '', author: '', genre: '', shortd
       />
     </div>
   );
-};
-
-export default BookDetails;
+}

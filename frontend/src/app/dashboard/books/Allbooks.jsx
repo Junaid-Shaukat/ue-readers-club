@@ -111,7 +111,7 @@ const Allbooks = () => {
           filteredBooks.map((book, index) => (
             <motion.div
               key={book._id}
-              className="bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl"
+              className="bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl flex flex-col h-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -123,35 +123,33 @@ const Allbooks = () => {
                 height={400}
                 className="w-full h-64 object-cover"
               />
-              <div className="p-4">
+              <div className="p-4 flex-grow flex flex-col">
                 <h3 className="font-semibold text-lg mb-1">{book.name}</h3>
-                <div className="flex justify-between items-center">
-                <p className="text-gray-600 text-sm">{book.author}</p>
-                  
-                  <p className="text-gray-500 flex  text-xs mt-1">
-                  <Eye className="mr-1" size={18} />{" "}
+                <div className="flex justify-between items-center mb-2">
+                  <p className="text-gray-600 text-sm">{book.author}</p>
+                  <p className="text-gray-500 flex items-center text-xs">
+                    <Eye className="mr-1" size={18} />
                     Views: {book.clicks}
                   </p>
                 </div>
-                <p className="text-black text-sm mt-2">{book.shortdescription.split(" ").slice(0, 12).join(" ") + (book.shortdescription.split(" ").length > 12 ? "..." : "")}</p>
-              </div>
-           
-              <div className="flex justify-between items-center">
-                <Link href={`/dashboard/book-details/${book._id}`}>
-                  <Button className="ml-3 mt-5 mb-4" variant="outline">
-                    Read More
-                  </Button>
-                </Link>
-                <button
-                  onClick={() => toggleFavorite(book._id)}
-                  className="mr-5 text-green-600 hover:text-green-800 transition-colors duration-300"
-                >
-                  {favorites.includes(book._id) ? (
-                    <FaHeart className="text-red-600" />
-                  ) : (
-                    <FaRegHeart className="text-red-600" />
-                  )}
-                </button>
+                <p className="text-black text-sm mb-4 line-clamp-2">{book.shortdescription}</p>
+                <div className="mt-auto flex justify-between items-center">
+                  <Link href={`/dashboard/book-details/${book._id}`}>
+                    <Button variant="outline">
+                      Read More
+                    </Button>
+                  </Link>
+                  <button
+                    onClick={() => toggleFavorite(book._id)}
+                    className="text-green-600 hover:text-green-800 transition-colors duration-300"
+                  >
+                    {favorites.includes(book._id) ? (
+                      <FaHeart className="text-red-600" />
+                    ) : (
+                      <FaRegHeart className="text-red-600" />
+                    )}
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))
