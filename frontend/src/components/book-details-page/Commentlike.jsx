@@ -11,7 +11,7 @@ const CommentLike = ({ userId }) => {
     const fetchUser = async () => {
       try {
         setLoading(true)
-        const response = await axios.get(`http://https://ue-readers-club-backend.vercel.app/users/findbyid/${userId}`)
+        const response = await axios.get(`https://ue-readers-club-backend.vercel.app/users/findbyid/${userId}`)
         setUser(response.data.user) // Access the user object from the response
       } catch (err) {
         setError('Failed to fetch user data')

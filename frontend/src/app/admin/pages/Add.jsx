@@ -55,7 +55,7 @@ const AddPage = () => {
 
     // Send a POST request to the backend with book data
     try {
-      const response = await axios.post('http://https://ue-readers-club-backend.vercel.app/admin/createbook', bookData);
+      const response = await axios.post('https://ue-readers-club-backend.vercel.app/admin/createbook', bookData);
       console.log('Book added successfully:', response.data);
       reset(); // Clear the form fields
       setUploadedImage(null); // Clear uploaded image
