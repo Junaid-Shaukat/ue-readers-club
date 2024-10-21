@@ -5,10 +5,11 @@ import { Badge } from "@/components/ui/badge"
 import { motion } from 'framer-motion'
 import axios from 'axios'
 import Link from 'next/link'
+import Image from 'next/image'
 
-// Remove TypeScript interface, use plain JavaScript
 export default function Bookofmonth() {
   const [bookOfTheMonth, setBookOfTheMonth] = useState(null)
+  const placeholderImage = '/placeholder-image.jpg' // Placeholder image if book image is not available
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -61,18 +62,18 @@ export default function Bookofmonth() {
               whileHover="hover"
               variants={{
                 rest: { scale: 1, rotate: 0 },
-                hover: { scale: 1.05, rotate: 10, transition: { duration: 0.1, ease: "easeInOut" } } // Increased speed
+                hover: { scale: 1.05, rotate: 10, transition: { duration: 0.1, ease: "easeInOut" } }
               }}
               className="relative w-3/4 rounded-lg shadow-lg overflow-hidden"
               style={{ perspective: 1000, transformStyle: 'preserve-3d' }}
             >
-          <img className="w-full h-[900px] rounded-lg object-cover " src={bookOfTheMonth.imageurls || placeholderImage} alt="Book of the month" />
-
-              {/* <img
-                className="w-[360px] h-[200px] sm:h-[300px] lg:h-[700px] object-cover rounded-lg" // Decreased height
-                src={bookOfTheMonth.imageurls}
+              <Image
+                className="w-full h-[900px] rounded-lg object-cover"
+                src={bookOfTheMonth.imageurls || placeholderImage}
                 alt="Book of the Month"
-              /> */}
+                width={500}
+                height={700}
+              />
             </motion.div>
           </div>
           <div className="mt-10 lg:mt-0 lg:ml-10">

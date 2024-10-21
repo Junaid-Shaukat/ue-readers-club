@@ -33,7 +33,7 @@ async function fetchRandomQuote() {
         author: "Albert Einstein"
       },
       {
-        text: "If you don’t like reading, you haven’t found the right book.",
+        text: "If you do not like reading, you have not found the right book.",
         author: "J.K. Rowling"
       },
       {
@@ -41,7 +41,7 @@ async function fetchRandomQuote() {
         author: "Neil Gaiman"
       },
       {
-        text: "Books are a mirror: if an ass looks in, you can’t expect an angel to look out.",
+        text: "Books are a mirror: if an ass looks in, you can not expect an angel to look out.",
         author: "B. W. Powe"
       },
       {
