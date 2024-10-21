@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import cors from "cors"; // Import CORS
+import cors from "cors"; 
 import { userRoute } from "./Route/userRoute.js";
 import { adminRoute } from "./Route/adminRoute.js";
 import { commentRoute } from "./Route/commentRoute.js";
