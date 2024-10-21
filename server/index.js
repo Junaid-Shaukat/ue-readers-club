@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your frontend URL in production
+  origin: ['http://localhost:3000','https://ue-readers-club.vercel.app'], // Replace with your frontend URL in production
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the methods you want to allow
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }));
