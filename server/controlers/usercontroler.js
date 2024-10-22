@@ -1,21 +1,20 @@
+
 import UserModel from "../Model/Usermodel.js";
 
-export const createUser = async (req, res) => {
+export const create = async (req, res) => {
     const { userId, username, imageUrl } = req.body;
-    
 
   
+        // Check if the user already exists by userId or username
+        const existingUser = await UserModel.findOne({ userId });
 
-    try {
-        const newUser = await UserModel.create({ userId, username, imageUrl });
-        return res.status(201).json({ message: 'User created successfully', user: newUser });
-    } catch (error) {
-        console.error('Error during user creation:', error);
-        return res.status(500).json({ error: 'Internal server error', details: error.message });
-    }
-    
+        if (!existingUser) {
+            const newUser = await UserModel.create({ userId, username, imageUrl });
+        }
+
+   
+     
 };
-
 
 
 
