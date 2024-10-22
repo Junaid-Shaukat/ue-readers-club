@@ -168,7 +168,7 @@ const Comment = ({ comment, onReply, onLike, onEdit, onDelete, currentUserId, al
               onClick={() => onScrollToComment(comment.parent_id)}
             >
               <CornerUpLeft className="h-4 w-4 inline mr-1" />
-              {truncateContent(getParentComment(comment.parent_id)?.content || 'Comment on which you reply deleted by user')}
+              {truncateContent(getParentComment(comment.parent_id)?.content || 'Commment Deleted by User')}
             </div>
           )}
           <div className="flex items-center justify-between mb-2">
