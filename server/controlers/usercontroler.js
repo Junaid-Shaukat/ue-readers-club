@@ -1,7 +1,7 @@
 
 import UserModel from "../Model/Usermodel.js";
 
-export const create = async (req, res) => {
+export const createUser = async (req, res) => {
     const { userId, username, imageUrl } = req.body;
 
   
