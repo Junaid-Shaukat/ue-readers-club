@@ -93,7 +93,7 @@ const Allbooks = () => {
     <section className="mb-12 mx-8">
       {/* Search bar */}
       <div className="mb-6 mt-6 flex justify-center items-center">
-  <div className="relative w-full max-w-full mx-9"> {/* Use relative and max-w-md to control width */}
+  <div className="relative w-full max-w-xl mx-9"> {/* Use relative and max-w-md to control width */}
     <input
       type="text"
       placeholder="Search by book name or author"

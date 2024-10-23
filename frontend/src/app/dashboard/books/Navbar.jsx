@@ -55,18 +55,17 @@ export default function Component() {
                 <span className="ml-2 text-xl font-bold text-gray-900">UE Readers Club</span>
               </Link>
               <div className="grid gap-6 p-6">
-                <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+                <Link href="/" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
                   Home
                 </Link>
-                <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-                  About
-                </Link>
-                <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-                  Services
-                </Link>
-                <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-                  Contact
-                </Link>
+                <Link
+            href="/dashboard"
+            className="inline-flex h-9 items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+            prefetch={false}
+          >
+           Go To Dashboard
+          </Link>
+          
               </div>
             </SheetContent>
           </Sheet>
