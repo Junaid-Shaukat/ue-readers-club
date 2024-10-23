@@ -62,7 +62,7 @@ export default function Bookofmonth() {
               whileHover="hover"
               variants={{
                 rest: { scale: 1, rotate: 0 },
-                hover: { scale: 1.05, rotate: 10, transition: { duration: 0.1, ease: "easeInOut" } }
+                hover: { scale: 1.05,  transition: { duration: 0.1, ease: "easeInOut" } }
               }}
               className="relative w-3/4 rounded-lg shadow-lg overflow-hidden"
               style={{ perspective: 1000, transformStyle: 'preserve-3d' }}
