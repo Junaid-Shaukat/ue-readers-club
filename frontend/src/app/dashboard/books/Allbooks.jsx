@@ -9,7 +9,7 @@ import { GiBookmark, GiBookshelf, GiDramaMasks, GiHeartInside, GiMagnifyingGlass
 import { BsStars } from "react-icons/bs";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { Eye } from "lucide-react";
+import { Eye, Search } from "lucide-react";
 
 const genres = [
   { name: "All", icon: <BsStars /> },
@@ -29,6 +29,7 @@ const Allbooks = () => {
   const [favorites, setFavorites] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("All");
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
 
   const toggleFavorite = (id) => {
     setFavorites((prev) =>
@@ -75,8 +76,38 @@ const Allbooks = () => {
     }
   };
 
+  // Function to handle search input and filter books based on the search query
+  const handleSearch = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchQuery(value);
+
+    const filtered = allbooks.filter((book) =>
+      book.name.toLowerCase().includes(value) || 
+      book.author.toLowerCase().includes(value)
+    );
+    
+    setFilteredBooks(filtered);
+  };
+
   return (
     <section className="mb-12 mx-8">
+      {/* Search bar */}
+      <div className="mb-6 mt-6 flex justify-center items-center">
+  <div className="relative w-full max-w-full mx-9"> {/* Use relative and max-w-md to control width */}
+    <input
+      type="text"
+      placeholder="Search by book name or author"
+      value={searchQuery}
+      onChange={handleSearch} // Attach the handleSearch function here
+      className="w-full p-2 border rounded-md shadow-sm pl-10" // Add padding-left for the icon
+    />
+    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+      <Search size={16} />
+    </div>
+  </div>
+</div>
+
+
       <section className="mb-12">
         <h1 className="text-2xl text-center p-3 font-bold mb-4 text-gray-800">
           All Genres
